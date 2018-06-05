@@ -23,7 +23,7 @@ DOF_within = (df.shape[0] * df.shape[1]) - df.shape[1]
 DOF_total = DOF_between + DOF_within
 print('DOF_within = {} , DOF_between = {} and DOF_total = {}'.format(DOF_within,DOF_between,DOF_total))
 print('-------------------------------------------------------')
-F_critical = st.f.ppf(q=1-Alpha_Val, dfn=DOF_between, dfd=DOF_total)
+F_critical = st.f.ppf(q=1-Alpha_Val, dfn=DOF_between, dfd=DOF_within)
 print('F_critical value here is {}'.format(F_critical))
 print('-------------------------------------------------------')
 
@@ -40,7 +40,7 @@ df.insert(loc=5, column='sq_of_dev_Gr3', value=new_col)
 #df.loc['sm'] = df.sum()
 #MS = (df.sq_of_dev_Gr1.sum()/df_col + df.sq_of_dev_Gr2.sum()/df_col + df.sq_of_dev_Gr3.sum()/df_col)/(df_rows-1)
 Grand_mean = (df.Group1.sum()+df.Group2.sum()+df.Group3.sum())/(df_rows*df_col)
-print('Grand mean is {}'.format(Grand_mean))
+print('Grand mean is {}'.format(Grand_mean))DOF_total
 
 sum_sq_total = ((df.Group1-Grand_mean)**2).sum() \
                 +((df.Group2-Grand_mean)**2).sum() \
